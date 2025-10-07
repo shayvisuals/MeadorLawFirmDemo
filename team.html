@@ -1,0 +1,581 @@
+<!DOCTYPE html>
+<html lang="en" class="dark">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Meet The Team - Meador Law Firm</title>
+    <script src="https://cdn.tailwindcss.com"></script>
+    <script src="https://cdn.jsdelivr.net/npm/feather-icons/dist/feather.min.js"></script>
+    <script src="https://unpkg.com/feather-icons"></script>
+    <script>
+        tailwind.config = {
+            darkMode: 'class',
+            theme: {
+                extend: {
+                    colors: {
+                        primary: '#000000',
+                        secondary: '#6B7280'
+                    }
+                }
+            }
+        }
+    </script>
+    <style>
+        .team-hero {
+            background: linear-gradient(rgba(0,0,0,0.8), rgba(0,0,0,0.8)), url('http://static.photos/office/1200x630/2');
+            background-size: cover;
+            background-position: center;
+        }
+        .team-card {
+            transition: all 0.3s ease;
+        }
+        .team-card:hover {
+            transform: translateY(-5px);
+            box-shadow: 0 20px 25px -5px rgba(0, 0, 0, 0.5);
+        }
+        .gradient-text {
+            background: linear-gradient(135deg, #ffffff 0%, #d1d5db 100%);
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+        }
+    </style>
+</head>
+<body class="bg-primary text-white min-h-screen">
+    <!-- Navigation -->
+    <nav class="bg-black border-b border-gray-800 sticky top-0 z-50">
+        <div class="container mx-auto px-4">
+            <div class="flex justify-between items-center py-4">
+                <div class="flex items-center">
+                    <a href="index.html">
+                        <img src="https://images.squarespace-cdn.com/content/v1/582380fe03596e12ef278f8a/1551455484999-X14CDSJ0SK292LO5JFQ4/the-meador-law-firm-st-louis-lawyer.png?format=1500w" 
+                             alt="Meador Law Firm" class="h-12">
+                    </a>
+                </div>
+                <div class="hidden md:flex space-x-8">
+                    <a href极速电竞="index.html" class="text-white hover:text-gray-300 transition-colors">Home</a>
+                    <a href="team.html" class="text-white hover:text-gray-300 transition-colors">Meet The Team</a>
+                    <a href="services.html" class="text-white hover:text-gray-300 transition-colors">Services</a>
+                    <a href="statistics.html" class="text-white hover:text-gray-300 transition-colors">Statistics</a>
+                    <a href="index.html#contact" class="text-white hover:text-gray-300 transition-colors">Contact</a>
+                </div>
+                <div class="flex items-center space-x-4">
+                    <div class="hidden md:flex items-center">
+                        <a href="https://www.instagram.com/meadorlaw/" target="_blank" class="text-white hover:text-gray-300 transition-colors">
+                            <i data-feather="instagram" class="w-5 h-5"></i>
+                        </a>
+                    </div>
+                    <button class="md:hidden text-white">
+                        <i data-feather="menu"></i>
+                    </button>
+                </div>
+</div>
+        </div>
+    </nav>
+
+    <!-- Mobile Drawer -->
+    <div id="mobile-drawer" class="fixed inset-0 bg-black bg-opacity-75 z-50 hidden">
+        <div class="absolute right-0 top-0 h-full w-64 bg-black shadow-xl">
+            <div class="flex justify-end p-4">
+                <button id="close-drawer" class="text-white">
+                    <i data-feather="x" class="w-6 h-6"></i>
+                </button>
+            </div>
+            <div class="flex flex-col space-y-4 px-6 py-4">
+                <a href="index.html" class="text-white hover:text-gray-300 transition-colors text-lg" onclick="closeDrawer()">Home</a>
+                <a href="team.html" class="text-white hover:text-gray-300 transition-colors text-lg" onclick="closeDrawer()">Meet The Team</a>
+                <a href="services.html" class="text-white hover:text-gray-300 transition-colors text-lg" onclick="closeDrawer()">Services</a>
+                <a href="index.html#contact" class="text-white hover:text-gray-300 transition-colors text-lg" onclick="closeDrawer()">Contact</a>
+                <div class="border-t border-gray-700 pt-4">
+                    <a href="https://www.instagram.com/meadorlaw/" target="_blank" class="flex items-center text-white hover:text-gray-300 transition-colors">
+                        <i data-feather="instagram" class="w-5 h-5 mr-2"></i> Instagram
+                    </a>
+                </div>
+            </div>
+        </div>
+    </div>
+    <script>
+        // Mobile drawer functionality
+        const mobileDrawer = document.getElementById('mobile-drawer');
+        const menuButton = document.querySelector('nav button.md\\:hidden');
+        const closeDrawerButton = document.getElementById('close-drawer');
+
+        function toggleDrawer() {
+            mobileDrawer.classList.toggle('hidden');
+            document.body.style.overflow = mobileDrawer.classList.contains('hidden') ? 'auto' : 'hidden';
+        }
+
+        function closeDrawer() {
+            mobileDrawer.classList.add('hidden');
+            document.body.style.overflow = 'auto';
+        }
+
+        menuButton.addEventListener('click', toggleDrawer);
+        closeDrawerButton.addEventListener('click', closeDrawer);
+
+        // Close drawer when clicking outside
+        mobileDrawer.addEventListener('click', (e) => {
+            if (e.target === mobileDrawer) {
+                closeDrawer();
+            }
+        });
+
+        // Close with ESC key
+        document.addEventListener('keydown', (e) => {
+            if (e.key === 'Escape' && !mobileDrawer.classList.contains('hidden')) {
+                closeDrawer();
+            }
+        });
+    </script>
+
+    <!-- Team Hero -->
+<section class="team-hero py-20">
+        <div class="container mx-auto px-4">
+            <div class="max-w-4xl mx-auto text-center">
+                <h1 class="text-5xl md:text-6xl font-bold mb-6 gradient-text">
+                    Meet Our Team
+                </h1>
+                <p class="text-xl text-gray-300 mb-8">
+                    Experienced attorneys dedicated to fighting for your rights and delivering exceptional legal representation.
+                </p>
+            </div>
+        </div>
+    </section>
+
+    <!-- Our Attorneys -->
+    <section class="py-20 bg-gray-900">
+        <div class="container mx-auto px-4">
+            <div class="text-center mb-16">
+                <h2 class="text-4xl md:text-5xl font-bold mb-4">OUR ATTORNEYS</h2>
+                <p class="text-gray-400 text-lg max-w-2xl mx-auto">
+                    Our team of skilled attorneys brings decades of combined experience and a proven track record of success.
+                </p>
+            </div>
+            <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8">
+                <!-- Partner -->
+                <div class="team-card bg-gray-800 rounded-xl overflow-hidden">
+                    <div class="h-80 overflow-hidden">
+                        <img src="https://huggingface.co/spaces/OShayL/meador-justice-nexus/resolve/main/images/Nicholas Meador.jpg" 
+                             alt="Nicholas K. Meador" class="w-full h-full object-cover">
+                    </div>
+<div class="p-6">
+                        <h3 class="text-2xl font-bold mb-2">Nicholas K. Meador</h3>
+                        <p class="text-gray-400 mb-3">Partner</p>
+                        <p class="text-gray-300 mb-4">
+                            Attorney Nicholas K. Meador was born and raised in St. Louis, where he laid the groundwork for his legal career. 
+                            An alumnus of Parkway South High School in Manchester, Missouri, he earned his undergraduate degree from Southeast 
+                            Missouri State University, graduating cum laude. Nicholas completed his legal education at Saint Louis University 
+                            School of Law in 2015.
+                        </p>
+                        <p class="text-gray-300 mb-4">
+                            During law school, he gained invaluable experience by clerking for prestigious private law firms in St. Louis, 
+                            where he learned the litigation strategies of some of the city's most successful attorneys.
+                        </p>
+                        <p class="text-gray-300 mb-4">
+                            Nicholas specializes in landlord representation, complex auto collisions, and intricate civil litigation. 
+                            His comprehensive skill set includes conducting written discovery, drafting motions to dismiss, taking depositions, 
+                            and preparing expert witnesses. He is well-versed in case strategy, pre-trial briefing, motions in limine, 
+                            summary judgment motions, and other essential trial preparations.
+                        </p>
+                        <p class="text-gray-300 mb-4">
+                            As a dedicated member of the Missouri Bar Association and the St. Louis County Bar Association, 
+                            Nicholas is licensed to practice in both Missouri and Federal Courts. His commitment to his clients 
+                            and his thorough approach to litigation make him a respected advocate in the legal community.
+                        </p>
+                        <div class="flex flex-wrap gap-2">
+                            <span class="bg-gray-700 text-gray-300 px-3 py-1 rounded-full text-sm">Landlord Representation</span>
+                            <span class="bg-gray-700 text-gray-300 px-3 py-1 rounded-full text-sm">Auto Collisions</span>
+                            <span class="bg-gray-700 text-gray-300 px-3 py-1 rounded-full text-sm">Civil Litigation</span>
+                            <span class="bg-gray-700 text-gray-300 px-3 py-1 rounded-full text-sm">Firm Leadership</span>
+                        </div>
+                    </div>
+                </div>
+                <!-- Attorney 1 - Mark Lee Jr. -->
+                <div class="team-card bg-gray-800 rounded-xl overflow-hidden">
+                    <div class="h-80 overflow-hidden">
+                        <img src="http://static.photos/people/640x360/2" 
+                             alt="Mark Lee Jr." class="w-full h-full object-cover">
+                    </div>
+                    <div class="p-6">
+                        <h3 class="text-2xl font-bold mb-2">Mark Lee Jr.</h3>
+                        <p class="text-gray-400 mb-3">Attorney</p>
+                        <p class="text-gray-300 mb-4">
+                            Mark became enthusiastic about criminal law and trial court at a young age when learning about his late grandfather, 
+                            a prominent St. Louis criminal defense attorney. As a result, he acquired a passion for helping clients through 
+                            difficult situations and unfortunate circumstances.
+                        </p>
+                        <p class="text-gray-300 mb-4">
+                            Mark earned his Juris Doctor from the University of Missouri-Kansas City School of Law. Throughout law school, 
+                            Mark gained extensive experience from his internship as an assistant municipal prosecutor working closely with 
+                            police investigation and trying cases under Missouri Rule 13 Certification. He also worked in criminal defense, 
+                            personal injury, and local government during his internship.
+                        </p>
+                        <p class="text-gray-300 mb-4">
+                            After law school, Mark worked as a trial lawyer for the Missouri Department of Revenue General Counsel's Office. 
+                            There, he prosecuted numerous DWI and license restriction cases in St. Louis County and other various counties 
+                            throughout Missouri. This provided him a distinct insight and expertise into procedure, probable cause, arrests, etc. 
+                            Mark then moved into the private sector where he could work in all areas of law and trial court. This also allowed 
+                            him to counsel more and better help those in need.
+                        </p>
+                        <p class="text-gray-300 mb-4">
+                            As a St. Louis native, Mark went to CBC High School and graduated from Mizzou where he earned his Bachelor of Science 
+                            in Business Administration, Finance and Banking with an emphasis in Economics. Outside of the office, Mark enjoys 
+                            golfing, running, going out with friends, spending time by the pool with family, and walking his dog Frankie to a local café or park.
+                        </p>
+                        <p class="text-gray-300 mb-4">
+                            <strong>Publications:</strong> Co-Authored Chapter 14 "Police Departments" of the 2016 Fourth Edition Missouri Local Government Law Deskbook.
+                        </p>
+                        <p class="text-gray-300 mb-4">
+                            <strong>Licensed in:</strong> Missouri
+                        </p>
+                        <div class="flex flex-wrap gap-2">
+                            <span class="bg-gray-700 text-gray-300 px-3 py-1 rounded-full text-sm">Criminal Defense</span>
+                            <span class="bg-gray-700 text-gray-300 px-3 py-1 rounded-full text-sm">Trial Law</span>
+                            <span class="bg-gray-700 text-gray-300 px-3 py-1 rounded-full text-sm">DWI Defense</span>
+                            <span class="bg-gray-700 text-gray-300 px-3 py-1 rounded-full text-sm">Traffic Violations</span>
+                            <span class="bg-gray-700 text-gray-300 px-3 py-1 rounded-full text-sm">License Reinstatement</span>
+                            <span class="bg-gray-700 text-gray-300 px-3 py-1 rounded-full text-sm">TRO's</span>
+                            <span class="bg-gray-700 text-gray-300 px-3 py-1 rounded-full text-sm">Dispute Resolution</span>
+                        </div>
+                    </div>
+                </div>
+<!-- Attorney 2 -->
+                <div class="team-card bg-gray-800 rounded-xl overflow-hidden">
+                    <div class="h-80 overflow-hidden">
+                        <img src="https://huggingface.co/spaces/OShayL/meador-justice-nexus/resolve/main/images/Ambry Emanuel.jpg" 
+                             alt="Ambry Emanuel" class="w-full h-full object-cover">
+                    </div>
+                    <div class="p-6">
+                        <h3 class="text-2xl font-bold mb-2">Ambry Emanuel</h3>
+                        <p class="text-gray-400 mb-3">Attorney</p>
+                        <p class="text-gray-300 mb-4">
+                            Ambry Nichole Emanuel earned her Juris Doctor from Saint Louis University School of Law and is a practicing member of the Missouri State Bar. 
+                            Ambry also holds a Bachelor of Arts in Communications and a Bachelor of Arts in Psychology from 
+                            Maryville University in St. Louis, where she graduated cum laude.
+                        </p>
+                        <p class="text-gray-300 mb-4">
+                            Ambry has been recognized as a Super Lawyer multiple times, a rating service of outstanding lawyers 
+                            who have attained a high degree of peer recognition and professional achievement.
+                        </p>
+                        <p class="text-gray-300 mb-4">
+                            While attending law school, Ambry completed three internships at the St. Louis County Prosecuting Attorney’s Office 
+                            and two internships working in family law. Upon graduation from law school, Ambry worked as an assistant prosecutor, 
+                            attaining verdicts for the State of Missouri in fifteen out of sixteen trials, the majority of which were domestic violence cases. 
+                            Ambry then went on to practice family law for five years, and currently practices 
+                            personal injury and civil litigation law.
+                        </p>
+                        <p class="text-gray-300 mb-4">
+                            Ambry previously worked as a Court Appointed Special Advocate for a child in an abuse and neglect case 
+                            and has served as a guest speaker at the University of Missouri-St. Louis for an undergraduate law course.
+                        </p>
+                        <div class="flex flex-wrap gap-2">
+                            <span class="bg-gray-700 text-gray-300 px-3 py-1 rounded-full text-sm">Personal Injury</span>
+                            <span class="bg-gray-700 text-gray-300 px-3 py-1 rounded-full text-sm">Civil Litigation</span>
+                            <span class="bg-gray-700 text-gray-300 px-3 py-1 rounded-full text-sm">Family Law</span>
+                            <span class="bg-gray-700 text-gray-300 px-3 py-1 rounded-full text-sm">Super Lawyer</span>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Legal Support Team Section -->
+                <div class="col-span-1 md:col-span-2 lg:col-span-3">
+                    <h3 class="text-3xl font-bold text-center mb-8 mt-12">LEGAL SUPPORT TEAM</h3>
+                    <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-6">
+                        <!-- Senior Litigation Paralegal -->
+                        <div class="team-card bg-gray-800 rounded-xl overflow-hidden">
+                            <div class="h-64 overflow-hidden">
+                                <img src="https://huggingface.co/spaces/OShayL/meador-justice-nexus/resolve/main/images/Kelly Krauch.webp" 
+                                     alt="Senior Litigation Paralegal" class="w-full h-full object-cover">
+                            </div>
+                            <div class="p-6">
+                                <h3 class="text-xl font-bold mb-2">Kelly Krauch</h3>
+                                <p class="text-gray-400 mb-3">Senior Litigation Paralegal</p>
+                                <p class="text-gray-300 mb-4 text-sm">
+                                    Kelly attended Albertus Magnus College in New Haven, Connecticut where she obtained her 
+                                    Associates Degree in Legal Studies and Bachelors Degree in Business Management. She is also 
+                                    an active member of the Missouri Association of Trial Attorneys Paralegal Division.
+                                </p>
+                                <p class="text-gray-300 mb-4 text-sm">
+                                    Kelly began her career in Connecticut in 2002, working in Personal Injury and Family Law. 
+                                    In 2008, Kelly moved to Phoenix, AZ where she worked exclusively in Personal Injury 
+                                    Litigation and Medical Malpractice before moving to Missouri in 2010.
+                                </p>
+                                <p class="text-gray-300 mb-4 text-sm">
+                                    Kelly brings over 26 years of experience and expertise to the Meador Law Firm, LLC, 
+                                    where she specializes in civil litigation and investigation of catastrophic injuries 
+                                    and wrongful death claims.
+                                </p>
+                                <p class="text-gray-300 mb-4 text-sm">
+                                    In her free time Kelly enjoys coaching youth soccer, being an active member of the 
+                                    School Board and spending time with her family.
+                                </p>
+                                <div class="flex flex-wrap gap-2">
+                                    <span class="bg-gray-700 text-gray-300 px-2 py-1 rounded-full text-xs">Case Management</span>
+                                    <span class="bg-gray-700 text-gray-300 px-2 py-1 rounded-full text-xs">Discovery</span>
+                                    <span class="bg-gray-700 text-gray-300 px-2 py-1 rounded-full text-xs">Trial Prep</span>
+                                    <span class="bg-gray-700 text-gray-300 px-2 py-1 rounded-full text-xs">Catastrophic Injuries</span>
+                                    <span class="bg-gray-700 text-gray-300 px-2 py-1 rounded-full text-xs">Wrongful Death</span>
+                                    <span class="bg-gray-700 text-gray-300 px-2 py-1 rounded-full text-xs">Civil Litigation</span>
+                                </div>
+                            </div>
+                        </div>
+
+                        <!-- Litigation Paralegal -->
+                        <div class="team-card bg-gray-800 rounded-xl overflow-hidden">
+                            <div class="h-64 overflow-hidden">
+                                <img src="https://huggingface.co/spaces/OShayL/meador-justice-nexus/resolve/main/images/Damaris Lighten.webp" 
+                                     alt="Litigation Paralegal" class="w-full h-full object-cover">
+                            </div>
+                            <div class="p-6">
+                                <h3 class="text-xl font-bold mb-2">Damaris Lighten</h3>
+                                <p class="text-gray-400 mb-3">Litigation Paralegal</p>
+                                <p class="text-gray-300 mb-4 text-sm">
+                                    Damaris earned her Associates of Applied Science Degree in Paralegal Studies in 2003 at Lincoln School of Commerce in Lincoln, Nebraska. 
+                                    Damaris went on to earn her certifications in medical terminology, anatomy, physiology, pathology, and pharmacology.
+                                </p>
+                                <p class="text-gray-300 mb-4 text-sm">
+                                    With 20 years of experience as a personal injury litigation paralegal and 5 years of experience as lead paralegal and legal services coordinator for O'Reilly Automotive, Inc., 
+                                    Damaris boasts a broad range of skills. She spent 8 years of her career as a litigation paralegal working in defense, 
+                                    which has been an invaluable tool when communicating with insurance companies and advocating for her clients.
+                                </p>
+                                <p class="text-gray-300 mb-4 text-sm">
+                                    Outside of work, Damaris enjoys cooking, playing cards, and spending time with her husband, children, and friends. 
+                                    She has a unique way of blending strength and fun into her personality and always has her co-workers laughing.
+                                </p>
+                                <div class="flex flex-wrap gap-2">
+                                    <span class="bg-gray-700 text-gray-300 px-2 py-1 rounded-full text-xs">Personal Injury</span>
+                                    <span class="bg-gray-700 text-gray-300 px-2 py-1 rounded-full text-xs">Insurance Advocacy</span>
+                                    <span class="bg-gray-700 text-gray-300 px-2 py-1 rounded-full text-xs">Medical Expertise</span>
+                                </div>
+                            </div>
+                        </div>
+
+                        <!-- Pre-Litigation Paralegal -->
+                        <div class="team-card bg-gray-800 rounded-xl overflow-hidden">
+                            <div class="h-64 overflow-hidden">
+                                <img src="https://huggingface.co/spaces/OShayL/meador-justice-nexus/resolve/main/images/Lacy Perkins.webp" 
+                                     alt="Pre-Litigation Paralegal" class="w-full h-full object-cover">
+                            </div>
+                            <div class="p-6">
+                                <h3 class="text-xl font-bold mb-2">Lacy Perkins</h3>
+                                <p class="text-gray-400 mb-3">Pre-Litigation Paralegal</p>
+                                <p class="text-gray-300 mb-4 text-sm">
+                                    Lacy is a seasoned paralegal with a remarkable blend of expertise and passion. With a decade of specialized experience in personal injury law and nearly two decades devoted to client relations, she stands as a beacon of dedication and excellence in her field.
+                                </p>
+                                <p class="text-gray-300 mb-4 text-sm">
+                                    Driven by a genuine desire to assist and advocate for others, Lacy's commitment to aiding her clients is unwavering. Her meticulous attention to detail and exceptional communication abilities ensure that her clients are well-informed and supported at every stage of their legal journey.
+                                </p>
+                                <p class="text-gray-300 mb-4 text-sm">
+                                    Beyond the confines of her professional life, Lacy thrives in the great outdoors, embarking on hiking expeditions, paddleboarding, camping, biking, and exploring the lesser-known beauties of nature. She is a lover of all animals and has a senior Min Pin named Bella and a Siamese cat named Tinker, along with a variety of backyard birds that her partner wishes she would stop feeding.
+                                </p>
+                                <div class="flex flex-wrap gap-2">
+                                    <span class="bg-gray-700 text-gray-300 px-2 py-1 rounded-full text-xs">Case Screening</span>
+                                    <span class="bg-gray-700 text-gray-300 px-2 py-1 rounded-full text-xs">Evidence Gathering</span>
+                                    <span class="bg-gray-700 text-gray-300 px-2 py-1 rounded-full text-xs">Client Intake</span>
+                                </div>
+                            </div>
+                        </div>
+
+                        <!-- Senior Paralegal -->
+                        <div class="team-card bg-gray-800 rounded-xl overflow-hidden">
+                            <div class="h-64 overflow-hidden">
+                                <img src="https://huggingface.co/spaces/OShayL/meador-justice-nexus/resolve/main/images/A8D36766-AC5B-408E-9CBF-6F22B1884070+2.jpg.webp" 
+                                     alt="Senior Paralegal" class="w-full h-full object-cover">
+                            </div>
+                            <div class="p-6">
+                                <h3 class="text-xl font-bold mb-2">Erica Ruest</h3>
+                                <p class="text-gray-400 mb-3">Senior Paralegal</p>
+                                <p class="text-gray-300 mb-4 text-sm">
+                                    Erica has a strong connection to the St. Louis area, having been born and raised here. 
+                                    She graduated from Webster University with her pre-law bachelor's degree and is currently a law student 
+                                    at St. Louis University School of Law, working toward her goal of becoming an attorney.
+                                </p>
+                                <p class="text-gray-300 mb-4 text-sm">
+                                    Since joining the firm in 2021, Erica handles client intake and communications 
+                                    while assisting in trial preparation. She specializes in tenant/landlord issues and personal injury claims.
+                                </p>
+                                <p class="text-gray-300 mb-4 text-sm">
+                                    She also runs the Paralegal office, overseeing case preparation, client care, and collections. 
+                                    Erica is committed to staying with the Meador Law Firm while pursuing her law degree and plans to 
+                                    continue with the firm during law school, transitioning to an attorney role upon graduation.
+                                </p>
+                                <div class="flex flex-wrap gap-2">
+                                    <span class="bg-gray-700 text-gray-300 px-2 py-1 rounded-full text-xs">Mentorship</span>
+                                    <span class="bg-gray-700 text-gray-300 px-2 py-1 rounded-full text-xs">Quality Control</span>
+                                    <span class="bg-gray-700 text-gray-300 px-2 py-1 rounded-full text-xs">Case Oversight</span>
+                                </div>
+                            </div>
+                        </div>
+
+                        <!-- Legal Coordinator -->
+                        <div class="team-card bg-gray-800 rounded-xl overflow-hidden">
+                            <div class="h-64 overflow-hidden">
+                                <img src="https://huggingface.co/spaces/OShayL/meador-justice-nexus/resolve/main/images/Samantha Pool copy.jpg" 
+                                     alt="Legal Coordinator" class="w-full h-full object-cover">
+                            </div>
+                            <div class="p-6">
+                                <h3 class="text-xl font-bold mb-2">Samantha Pool</h3>
+                                <p class="text-gray-400 mb-3">Legal Coordinator</p>
+                                <p class="text-gray-300 mb-4 text-sm">
+                                    Sam is a dedicated legal coordinator with a background in navigating  legal matters, honed through years of experience at Stifel. Known for her meticulous attention to detail and exceptional organizational skills, Sam plays a crucial role in supporting the legal team. Her approachable demeanor and clear communication style make her a trusted advisor for clients seeking assistance.
+                                </p>
+                                <div class="flex flex-wrap gap-2">
+                                    <span class="bg-gray-700 text-gray-300 px-2 py-1 rounded-full text-xs">Case Coordination</span>
+                                    <span class="bg-gray-700 text-gray-300 px-2 py-1 rounded-full text-xs">Scheduling</span>
+                                    <span class="bg-gray-700 text-gray-300 px-2 py-1 rounded-full text-xs">Communication</span>
+                                </div>
+                            </div>
+                        </div>
+
+                        <!-- Paralegal -->
+                        <div class="team-card bg-gray-800 rounded-xl overflow-hidden">
+                            <div class="h-64 overflow-hidden">
+                                <img src="https://huggingface.co/spaces/OShayL/meador-justice-nexus/resolve/main/images/Gabriel Ayers.jpg" 
+                                     alt="Gabriel Ayers" class="w-full h-full object-cover">
+                            </div>
+                            <div class="p-6">
+                                <h3 class="text-xl font-bold mb-2">Gabriel Ayers</h3>
+                                <p class="text-gray-400 mb-3">Paralegal</p>
+                                <p class="text-gray-300 mb-4 text-sm">
+                                    Gabe is a paralegal at the firm, and he graduated from Webster University in St. Louis. His academic journey provided him with a solid foundation in legal principles, while his practical experience has equipped him with the skills necessary to thrive in a dynamic legal environment. His attention to detail and analytical mindset make him a valuable asset to any legal team, allowing him to effectively support attorneys in preparing for trials and managing complex cases.
+                                </p>
+                                <div class="flex flex-wrap gap-2">
+                                    <span class="bg-gray-700 text-gray-300 px-2 py-1 rounded-full text-xs">Document Prep</span>
+                                    <span class="bg-gray-700 text-gray-300 px-2 py-1 rounded-full text-xs">File Management</span>
+                                    <span class="bg-gray-700 text-gray-300 px-2 py-1 rounded-full text-xs">Legal Support</span>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+</div>
+    </section>
+
+    <!-- Our Values -->
+    <section class="py-20 bg-primary">
+        <div class="container mx-auto px-4">
+            <div class="max-w-6xl mx-auto">
+                <div class="text-center mb-16">
+                    <h2 class="text-4xl md:text-5xl font-bold mb-4">OUR VALUES</h2>
+                    <p class="text-gray-400 text-lg max-w-2xl mx-auto">
+                        The principles that guide our practice and define our commitment to our clients.
+                    </p>
+                </div>
+                
+                <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8">
+                    <div class="text-center">
+                        <div class="bg-gray-800 rounded-full w-20 h-20 flex items-center justify-center mx-auto mb-6">
+                            <i data-feather="target" class="w-10 h-10 text-white"></i>
+                        </div>
+                        <h3 class="text-xl font-bold mb-4">Excellence</h3>
+                        <p class="text-gray-400">
+                            We strive for excellence in every aspect of our practice, from case preparation to courtroom advocacy.
+                        </p>
+                    </div>
+                    
+                    <div class="text-center">
+                        <div class="bg-gray-800 rounded-full w-20 h-20 flex items-center justify-center mx-auto mb-6">
+                            <i data-feather="users" class="w-10 h-10 text-white"></i>
+                        </div>
+                        <h3 class="text-xl font-bold mb-4">Client-Focused</h3>
+                        <p class="text-gray-400">
+                            Your needs come first. We listen carefully and tailor our approach to achieve your specific goals.
+                        </p>
+                    </div>
+                    
+                    <div class="text-center">
+                        <div class="bg-gray-800 rounded-full w-20 h-20 flex items-center justify-center mx-auto mb-6">
+                            <i data-feather="shield" class="w-10 h-10 text-white"></i>
+                        </div>
+                        <h3 class="text-xl font-bold mb-4">Integrity</h3>
+                        <p class="text-gray-400">
+                            We maintain the highest ethical standards and are committed to honesty and transparency.
+                        </p>
+                    </div>
+                    
+                    <div class="text-center">
+                        <div class="bg-gray-800 rounded-full w-20 h-20 flex items-center justify-center mx-auto mb-6">
+                            <i data-feather="award" class="w-10 h-10 text-white"></i>
+                        </div>
+                        <h3 class="text-xl font-bold mb-4">Results-Driven</h3>
+                        <p class="text-gray-400">
+                            We are dedicated to achieving the best possible outcomes for our clients through strategic advocacy.
+                        </p>
+                    </div>
+                    
+                    <div class="text-center">
+                        <div class="bg-gray-800 rounded-full w-20 h-20 flex items-center justify-center mx-auto mb-6">
+                            <i data-feather="heart" class="w-10 h-10 text-white"></i>
+                        </div>
+                        <h3 class="text-xl font-bold mb-4">Compassion</h3>
+                        <p class="text-gray-400">
+                            We understand the stress of legal challenges and provide compassionate support throughout the process.
+                        </p>
+                    </div>
+                    
+                    <div class="text-center">
+                        <div class="bg-gray-800 rounded-full w-20 h-20 flex items-center justify-center mx-auto mb-6">
+                            <i data-feather="clock" class="w-10 h-10 text-white"></i>
+                        </div>
+                        <h3 class="text-xl font-bold mb-4">Dedication</h3>
+                        <p class="text-gray-400">
+                            We are committed to providing diligent representation and fighting tirelessly for your rights.
+                        </p>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- CTA Section -->
+    <section class="py-16 bg-gray-900 border-t border-gray-800">
+        <div class="container mx-auto px-4 text-center">
+            <h2 class="text-3xl md:text-4xl font-bold mb-6">Ready to Work With Our Team?</h2>
+            <p class="text-gray-400 mb-8 max-w-2xl mx-auto">
+                Contact us today to schedule a consultation with one of our experienced attorneys.
+            </p>
+            <a href="index.html#contact" class="bg-white text-primary px-8 py-4 rounded-lg font-semibold hover:bg-gray-200 transition-colors inline-block">
+                Free Consultation
+            </a>
+        </div>
+    </section>
+
+    <!-- Footer -->
+    <footer class="bg-white border-t border-gray-300 py-12 text-black">
+        <div class="container mx-auto px-4">
+            <div class="flex flex-col md:flex-row justify-between items-center">
+                <div class="mb-6 md:mb-0">
+                    <a href="index.html">
+                        <img src="https://images.squarespace-cdn.com/content/v1/582380fe03596e12ef278f8a/1551455484999-X14CDSJ0SK292LO5JFQ4/the-meador-law-firm-st-louis-lawyer.png?format=1500w" 
+                             alt="Meador Law Firm" class="h-10">
+                    </a>
+                </div>
+                <div class="text-center md:text-right">
+                    <p class="text-gray-700 mb-2">©2019 Meador Law Firm</p>
+                    <p class="text-gray-600 text-sm italic">
+                        The choice of attorney is an important one and should not be based solely on advertisements.
+                    </p>
+                </div>
+            </div>
+        </div>
+    </footer>
+
+    <script>
+        feather.replace();
+        
+        // Smooth scrolling for navigation links
+        document.querySelectorAll('a[href^="#"]').forEach(anchor => {
+            anchor.addEventListener('click', function (e) {
+                e.preventDefault();
+                const target = document.querySelector(this.getAttribute('href'));
+                if (target) {
+                    target.scrollIntoView({
+                        behavior: 'smooth',
+                        block: 'start'
+                    });
+                }
+            });
+        });
+    </script>
+</body>
+</html>

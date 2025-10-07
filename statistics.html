@@ -1,0 +1,678 @@
+<!DOCTYPE html>
+<html lang="en" class="dark">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Case Statistics - Meador Law Firm</title>
+    <script src="https://cdn.tailwindcss.com"></script>
+    <script src="https://cdn.jsdelivr.net/npm/feather-icons/dist/feather.min.js"></script>
+    <script src="https://unpkg.com/feather-icons"></script>
+    <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
+    <script>
+        tailwind.config = {
+            darkMode: 'class',
+            theme: {
+                extend: {
+                    colors: {
+                        primary: '#000000',
+                        secondary: '#6B7280'
+                    }
+                }
+            }
+        }
+    </script>
+    <style>
+        .stats-hero {
+            background: linear-gradient(rgba(0,0,0,0.8), rgba(0,0,0,0.8)), url('http://static.photos/legal/1200x630/3');
+            background-size: cover;
+            background-position: center;
+        }
+        .stat-card {
+            transition: all 0.3s ease;
+        }
+        .stat-card:hover {
+            transform: translateY(-5px);
+            box-shadow: 0 20px 25px -5px rgba(0, 0, 0, 0.3);
+        }
+    </style>
+</head>
+<body class="bg-primary text-white min-h-screen">
+    <!-- Navigation -->
+    <nav class="bg-white border-b border-gray-300 sticky top-0 z-50">
+        <div class="container mx-auto px-4">
+            <div class="flex justify-between items-center py-4">
+                <div class="flex items-center">
+                    <a href="index.html">
+                        <img src="https://images.squarespace-cdn.com/content/v1/582380fe03596e12ef278f8a/1551455484999-X14CDSJ0SK292LO5JFQ4/the-meador-law-firm-st-louis-lawyer.png?format=1500w" 
+                             alt="Meador Law Firm" class="h-12">
+                    </a>
+                </div>
+                <div class="hidden md:flex space-x-8">
+                    <a href="index.html" class="text-black hover:text-gray-600 transition-colors">Home</a>
+                    <a href="team.html" class="text-black hover:text-gray-600 transition-colors">Home</a>
+                    <a href="team.html" class="text-black hover:text-gray-600 transition-colors">Team</a>
+                    <a href="services.html" class="text-black hover:text-gray-600 transition-colors">Services</a>
+                    <a href="statistics.html" class="text-black hover:text-gray-600 transition-colors">Services</a>
+                    <a href="statistics.html" class="text-black hover:text-gray-600 transition-colors">Statistics</a>
+                    <a href="index.html#contact" class="text-black hover:text-gray-600 transition-colors">Contact</a>
+                </div>
+                <div class="flex items-center space-x-4">
+                    <div class="hidden md:flex items-center">
+                        <a href="https://www.instagram.com/meadorlaw/" target="_blank" class="text-black hover:text-gray-600 transition-colors">
+                            <i data-feather="instagram" class="w-5 h-5"></i>
+                        </a>
+                    </div>
+                    <button class="md:hidden text-black">
+                        <i data-feather="menu"></i>
+                    </button>
+                </div>
+            </div>
+        </div>
+    </nav>
+
+    <!-- Mobile Drawer -->
+    <div id="mobile-drawer" class="fixed inset-0 bg-black bg-opacity-75 z-50 hidden">
+        <div class="absolute right-0 top-0 h-full w-64 bg-white shadow-xl">
+            <div class="flex justify-end p-4">
+                <button id="close-drawer" class="text-white">
+                    <i data-feather="x" class="w-6 h-6"></i>
+                </button>
+            </div>
+            <div class="flex flex-col space-y-4 px-6 py-4">
+                <a href="index.html" class="text-white hover:text-gray-300 transition-colors text-lg" onclick="closeDrawer()">Home</a>
+                <a href="team.html" class="text-white hover:text-gray-300 transition-colors text-lg" onclick="closeDrawer()">Team</a>
+                <a href="services.html" class="text-white hover:text-gray-300 transition-colors text-lg" onclick="closeDrawer()">Services</a>
+                <a href="statistics.html" class="text-white hover:text-gray-300 transition-colors text-lg" onclick="closeDrawer()">Statistics</a>
+                <a href="index.html#contact" class="text-white hover:text-gray-300 transition-colors text-lg" onclick="closeDrawer()">Contact</a>
+                <div class="border-t border-gray-700 pt-4">
+                    <a href="https://www.instagram.com/meadorlaw/" target="_blank" class="flex items-center text-white hover:text-gray-300 transition-colors">
+                        <i data-feather="instagram" class="w-5 h-5 mr-2"></i> Instagram
+                    </a>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <!-- Hero Section -->
+    <section class="stats-hero py-20">
+        <div class="container mx-auto px-4">
+            <div class="max-w-4xl mx-auto text-center">
+                <h1 class="text-5xl md:text-7xl font-bold mb-6">Case Statistics</h1>
+                <p class="text-xl md:text-2xl text-gray-300 mb-8 max-w-3xl mx-auto">
+                    Our track record of success speaks for itself. Explore our case statistics across all practice areas.
+                </p>
+            </div>
+        </div>
+    </section>
+
+    <!-- Key Metrics -->
+    <section class="py-16 bg-gray-900">
+        <div class="container mx-auto px-4">
+            <div class="text-center mb-16">
+                <h2 class="text-4xl md:text-5xl font-bold mb-4">OUR RESULTS</h2>
+                <p class="text-gray-400 text-lg max-w-2xl mx-auto">
+                    Quantifying our success across all practice areas
+                </p>
+            </div>
+            
+            <div class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-6">
+                <div class="stat-card bg-gray-800 rounded-xl p-8 text-center">
+                    <div class="text-5xl font-bold mb-4">500+</div>
+                    <h3 class="text-xl font-bold mb-2">Cases Handled</h3>
+                    <p class="text-gray-400">Successful resolutions across all practice areas</p>
+                </div>
+                
+                <div class="stat-card bg-gray-800 rounded-xl p-8 text-center">
+                    <div class="text-5xl font-bold mb-4">$25M+</div>
+                    <h3 class="text-xl font-bold mb-2">Recovered</h3>
+                    <p class="text-gray-400">For our clients in settlements and verdicts</p>
+                </div>
+                
+                <div class="stat-card bg-gray-800 rounded-xl p-8 text-center">
+                    <div class="text-5xl font-bold mb-4">95%</div>
+                    <h3 class="text-xl font-bold mb-2">Success Rate</h3>
+                    <p class="text-gray-400">Of cases favorably resolved</p>
+                </div>
+                
+                <div class="stat-card bg-gray-800 rounded-xl p-8 text-center">
+                    <div class="text-5xl font-bold mb-4">100+</div>
+                    <h3 class="text-xl font-bold mb-2">Years Combined</h3>
+                    <p class="text-gray-400">Legal experience across our team</p>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Practice Area Statistics -->
+    <section class="py-20 bg-primary">
+        <div class="container mx-auto px-4">
+            <div class="text-center mb-16">
+                <h2 class="text-4xl md:text-5xl font-bold mb-4">BY PRACTICE AREA</h2>
+                <p class="text-gray-400 text-lg max-w-2xl mx-auto">
+                    Detailed breakdown of our case statistics by legal specialty
+                </p>
+            </div>
+
+            <div class="grid grid-cols-1 lg:grid-cols-2 gap-12 mb-20">
+                <!-- Personal Injury -->
+                <div class="bg-gray-800 rounded-xl p-8">
+                    <div class="flex justify-between items-center mb-6">
+                        <h3 class="text-2xl font-bold">Personal Injury</h3>
+                        <span class="bg-blue-900 text-blue-300 px-4 py-1 rounded-full">96% Success</span>
+                    </div>
+                    <div class="grid grid-cols-2 gap-4 mb-6">
+                        <div class="bg-gray-700 rounded-lg p-4">
+                            <div class="text-3xl font-bold mb-2">$12.5M</div>
+                            <p class="text-gray-400 text-sm">Total Recovered</p>
+                        </div>
+                        <div class="bg-gray-700 rounded-lg p-4">
+                            <div class="text-3xl font-bold mb-2">187</div>
+                            <p class="text-gray-400 text-sm">Cases Handled</p>
+                        </div>
+                        <div class="bg-gray-700 rounded-lg p-4">
+                            <div class="text-3xl font-bold mb-2">$250K</div>
+                            <p class="text-gray-400 text-sm">Average Settlement</p>
+                        </div>
+                        <div class="bg-gray-700 rounded-lg p-4">
+                            <div class="text-3xl font-bold mb-2">3.2M</div>
+                            <p class="text-gray-400 text-sm">Largest Verdict</p>
+                        </div>
+                    </div>
+                    <canvas id="personalInjuryChart" height="200"></canvas>
+                </div>
+
+                <!-- Civil Litigation -->
+                <div class="bg-gray-800 rounded-xl p-8">
+                    <div class="flex justify-between items-center mb-6">
+                        <h3 class="text-2xl font-bold">Civil Litigation</h3>
+                        <span class="bg-green-900 text-green-300 px-4 py-1 rounded-full">92% Success</span>
+                    </div>
+                    <div class="grid grid-cols-2 gap-4 mb-6">
+                        <div class="bg-gray-700 rounded-lg p-4">
+                            <div class="text-3xl font-bold mb-2">$8.2M</div>
+                            <p class="text-gray-400 text-sm">Total Recovered</p>
+                        </div>
+                        <div class="bg-gray-700 rounded-lg p-4">
+                            <div class="text-3xl font-bold mb-2">143</div>
+                            <p class="text-gray-400 text-sm">Cases Handled</p>
+                        </div>
+                        <div class="bg-gray-700 rounded-lg p-4">
+                            <div class="text-3xl font-bold mb-2">$175K</div>
+                            <p class="text-gray-400 text-sm">Average Settlement</p>
+                        </div>
+                        <div class="bg-gray-700 rounded-lg p-4">
+                            <div class="text-3xl font-bold mb-2">2.1M</div>
+                            <p class="text-gray-400 text-sm">Largest Verdict</p>
+                        </div>
+                    </div>
+                    <canvas id="civilLitigationChart" height="200"></canvas>
+                </div>
+
+                <!-- Criminal Law -->
+                <div class="bg-gray-800 rounded-xl p-8">
+                    <div class="flex justify-between items-center mb-6">
+                        <h3 class="text-2xl font-bold">Criminal Law</h3>
+                        <span class="bg-purple-900 text-purple-300 px-4 py-1 rounded-full">98% Success</span>
+                    </div>
+                    <div class="grid grid-cols-2 gap-4 mb-6">
+                        <div class="bg-gray-700 rounded-lg p-4">
+                            <div class="text-3xl font-bold mb-2">97%</div>
+                            <p class="text-gray-400 text-sm">Case Dismissals</p>
+                        </div>
+                        <div class="bg-gray-700 rounded-lg p-4">
+                            <div class="text-3xl font-bold mb-2">215</div>
+                            <p class="text-gray-400 text-sm">Cases Handled</p>
+                        </div>
+                        <div class="bg-gray-700 rounded-lg p-4">
+                            <div class="text-3xl font-bold mb-2">87%</div>
+                            <p class="text-gray-400 text-sm">Reduced Charges</p>
+                        </div>
+                        <div class="bg-gray-700 rounded-lg p-4">
+                            <div class="text-3xl font-bold mb-2">2</div>
+                            <p class="text-gray-400 text-sm">Acquittals at Trial</p>
+                        </div>
+                    </div>
+                    <canvas id="criminalLawChart" height="200"></canvas>
+                </div>
+
+                <!-- Landlord/Tenant -->
+                <div class="bg-gray-800 rounded-xl p-8">
+                    <div class="flex justify-between items-center mb-6">
+                        <h3 class="text-2xl font-bold">Landlord/Tenant</h3>
+                        <span class="bg-yellow-900 text-yellow-300 px-4 py-1 rounded-full">94% Success</span>
+                    </div>
+                    <div class="grid grid-cols-2 gap-4 mb-6">
+                        <div class="bg-gray-700 rounded-lg p-4">
+                            <div class="text-3xl font-bold mb-2">98%</div>
+                            <p class="text-gray-400 text-sm">Eviction Success</p>
+                        </div>
+                        <div class="bg-gray-700 rounded-lg p-4">
+                            <div class="text-3xl font-bold mb-2">320</div>
+                            <p class="text-gray-400 text-sm">Cases Handled</p>
+                        </div>
+                        <div class="bg-gray-700 rounded-lg p-4">
+                            <div class="text-3xl font-bold mb-2">$1.2M</div>
+                            <p class="text-gray-400 text-sm">Rent Collected</p>
+                        </div>
+                        <div class="bg-gray-700 rounded-lg p-4">
+                            <div class="text-3xl font-bold mb-2">14</div>
+                            <p class="text-gray-400 text-sm">Days Avg. Resolution</p>
+                        </div>
+                    </div>
+                    <canvas id="landlordChart" height="200"></canvas>
+                </div>
+            </div>
+
+            <!-- Case Type Distribution -->
+            <div class="bg-gray-800 rounded-xl p-8 mb-20">
+                <h3 class="text-2xl font-bold mb-8 text-center">Case Type Distribution</h3>
+                <div class="grid grid-cols-1 lg:grid-cols-2 gap-8 items-center">
+                    <div>
+                        <canvas id="caseDistributionChart" height="300"></canvas>
+                    </div>
+                    <div>
+                        <div class="space-y-4">
+                            <div class="flex items-center">
+                                <div class="w-4 h-4 bg-blue-500 rounded-full mr-3"></div>
+                                <span class="text-gray-300">Personal Injury (37%)</span>
+                            </div>
+                            <div class="flex items-center">
+                                <div class="w-4 h-4 bg-green-500 rounded-full mr-3"></div>
+                                <span class="text-gray-300">Civil Litigation (26%)</span>
+                            </div>
+                            <div class="flex items-center">
+                                <div class="w-4 h-4 bg-purple-500 rounded-full mr-3"></div>
+                                <span class="text-gray-300">Criminal Defense (19%)</span>
+                            </div>
+                            <div class="flex items-center">
+                                <div class="w-4 h-4 bg-yellow-500 rounded-full mr-3"></div>
+                                <span class="text-gray-300">Landlord/Tenant (12%)</span>
+                            </div>
+                            <div class="flex items-center">
+                                <div class="w-4 h-4 bg-red-500 rounded-full mr-3"></div>
+                                <span class="text-gray-300">Corporate Litigation (6%)</span>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Yearly Results -->
+            <div class="bg-gray-800 rounded-xl p-8">
+                <h3 class="text-2xl font-bold mb-8 text-center">Yearly Case Results</h3>
+                <canvas id="yearlyResultsChart" height="300"></canvas>
+            </div>
+        </div>
+    </section>
+
+    <!-- Client Testimonials -->
+    <section class="py-20 bg-gray-900">
+        <div class="container mx-auto px-4">
+            <div class="text-center mb-16">
+                <h2 class="text-4xl md:text-5xl font-bold mb-4">CLIENT TESTIMONIALS</h2>
+                <p class="text-gray-400 text-lg max-w-2xl mx-auto">
+                    Hear from clients we've helped through challenging legal situations
+                </p>
+            </div>
+            
+            <div class="grid grid-cols-1 md:grid-cols-3 gap-8">
+                <div class="bg-gray-800 rounded-xl p-8">
+                    <div class="flex items-center mb-4">
+                        <div class="w-12 h-12 rounded-full bg-gray-700 mr-4 overflow-hidden">
+                            <img src="http://static.photos/people/200x200/1" class="w-full h-full object-cover">
+                        </div>
+                        <div>
+                            <h4 class="font-bold">Sarah J.</h4>
+                            <p class="text-gray-400 text-sm">Personal Injury Client</p>
+                        </div>
+                    </div>
+                    <p class="text-gray-300 italic mb-4">"After my car accident, Meador Law Firm fought tirelessly to get me the compensation I deserved. Their attention to detail and dedication to my case was exceptional."</p>
+                    <div class="flex text-yellow-400">
+                        <i data-feather="star" class="w-4 h-4 fill-current"></i>
+                        <i data-feather="star" class="w-4 h-4 fill-current"></i>
+                        <i data-feather="star" class="w-4 h-4 fill-current"></i>
+                        <i data-feather="star" class="w-4 h-4 fill-current"></i>
+                        <i data-feather="star" class="w-4 h-4 fill-current"></i>
+                    </div>
+                </div>
+                
+                <div class="bg-gray-800 rounded-xl p-8">
+                    <div class="flex items-center mb-4">
+                        <div class="w-12 h-12 rounded-full bg-gray-700 mr-4 overflow-hidden">
+                            <img src="http://static.photos/people/200x200/2" class="w-full h-full object-cover">
+                        </div>
+                        <div>
+                            <h4 class="font-bold">Michael T.</h4>
+                            <p class="text-gray-400 text-sm">Business Owner</p>
+                        </div>
+                    </div>
+                    <p class="text-gray-300 italic mb-4">"When a former employee sued my company, Nick Meador and his team provided excellent representation. They were always available to answer my questions and achieved a favorable settlement."</p>
+                    <div class="flex text-yellow-400">
+                        <i data-feather="star" class="w-4 h-4 fill-current"></i>
+                        <i data-feather="star" class="w-4 h-4 fill-current"></i>
+                        <i data-feather="star" class="w-4 h-4 fill-current"></i>
+                        <i data-feather="star" class="w-4 h-4 fill-current"></i>
+                        <i data-feather="star" class="w-4 h-4 fill-current"></i>
+                    </div>
+                </div>
+                
+                <div class="bg-gray-800 rounded-xl p-8">
+                    <div class="flex items-center mb-4">
+                        <div class="w-12 h-12 rounded-full bg-gray-700 mr-4 overflow-hidden">
+                            <img src="http://static.photos/people/200x200/3" class="w-full h-full object-cover">
+                        </div>
+                        <div>
+                            <h4 class="font-bold">Lisa R.</h4>
+                            <p class="text-gray-400 text-sm">Landlord Client</p>
+                        </div>
+                    </div>
+                    <p class="text-gray-300 italic mb-4">"I had a tenant who stopped paying rent and refused to leave. Meador Law handled the eviction quickly and professionally, saving me thousands in lost rent."</p>
+                    <div class="flex text-yellow-400">
+                        <i data-feather="star" class="w-4 h-4 fill-current"></i>
+                        <i data-feather="star" class="w-4 h-4 fill-current"></i>
+                        <i data-feather="star" class="w-4 h-4 fill-current"></i>
+                        <i data-feather="star" class="w-4 h-4 fill-current"></i>
+                        <i data-feather="star" class="w-4 h-4 fill-current"></i>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- CTA Section -->
+    <section class="py-16 bg-primary border-t border-gray-800">
+        <div class="container mx-auto px-4 text-center">
+            <h2 class="text-3xl md:text-4xl font-bold mb-6">Ready to Discuss Your Case?</h2>
+            <p class="text-gray-400 mb-8 max-w-2xl mx-auto">
+                Contact us today for a free consultation about your legal needs.
+            </p>
+            <a href="index.html#contact" class="bg-white text-primary px-8 py-4 rounded-lg font-semibold hover:bg-gray-200 transition-colors inline-block">
+                Get Started
+            </a>
+        </div>
+    </section>
+
+    <!-- Footer -->
+    <footer class="bg-white border-t border-gray-300 py-12 text-black">
+        <div class="container mx-auto px-4">
+            <div class="flex flex-col md:flex-row justify-between items-center">
+                <div class="mb-6 md:mb-0">
+                    <a href="index.html">
+                        <img src="https://images.squarespace-cdn.com/content/v1/582380fe03596e12ef278f8a/1551455484999-X14CDSJ0SK292LO5JFQ4/the-meador-law-firm-st-louis-lawyer.png?format=1500w" 
+                             alt="Meador Law Firm" class="h-10">
+                    </a>
+                </div>
+                <div class="text-center md:text-right">
+                    <p class="text-gray-700 mb-2">©2019 Meador Law Firm</p>
+                    <p class="text-gray-600 text-sm italic">
+                        The choice of attorney is an important one and should not be based solely on advertisements.
+                    </p>
+                </div>
+            </div>
+        </div>
+    </footer>
+
+    <script>
+        // Mobile drawer functionality
+        const mobileDrawer = document.getElementById('mobile-drawer');
+        const menuButton = document.querySelector('nav button.md\\:hidden');
+        const closeDrawerButton = document.getElementById('close-drawer');
+
+        function toggleDrawer() {
+            mobileDrawer.classList.toggle('hidden');
+            document.body.style.overflow = mobileDrawer.classList.contains('hidden') ? 'auto' : 'hidden';
+        }
+
+        function closeDrawer() {
+            mobileDrawer.classList.add('hidden');
+            document.body.style.overflow = 'auto';
+        }
+
+        menuButton.addEventListener('click', toggleDrawer);
+        closeDrawerButton.addEventListener('click', closeDrawer);
+
+        // Close drawer when clicking outside
+        mobileDrawer.addEventListener('click', (e) => {
+            if (e.target === mobileDrawer) {
+                closeDrawer();
+            }
+        });
+
+        // Close with ESC key
+        document.addEventListener('keydown', (e) => {
+            if (e.key === 'Escape' && !mobileDrawer.classList.contains('hidden')) {
+                closeDrawer();
+            }
+        });
+
+        // Initialize charts
+        function initCharts() {
+            // Personal Injury Chart
+            const piCtx = document.getElementById('personalInjuryChart').getContext('2d');
+            new Chart(piCtx, {
+                type: 'bar',
+                data: {
+                    labels: ['Car Accidents', 'Slip & Fall', 'Medical Malpractice', 'Workplace Injuries', 'Product Liability'],
+                    datasets: [{
+                        label: 'Average Settlement ($)',
+                        data: [285000, 195000, 420000, 210000, 375000],
+                        backgroundColor: 'rgba(59, 130, 246, 0.7)',
+                        borderColor: 'rgba(59, 130, 246, 1)',
+                        borderWidth: 1
+                    }]
+                },
+                options: {
+                    responsive: true,
+                    plugins: {
+                        legend: {
+                            display: false
+                        }
+                    },
+                    scales: {
+                        y: {
+                            beginAtZero: true,
+                            ticks: {
+                                callback: function(value) {
+                                    return '$' + value.toLocaleString();
+                                }
+                            }
+                        }
+                    }
+                }
+            });
+
+            // Civil Litigation Chart
+            const clCtx = document.getElementById('civilLitigationChart').getContext('2d');
+            new Chart(clCtx, {
+                type: 'bar',
+                data: {
+                    labels: ['Contract Disputes', 'Real Estate', 'Employment', 'Business', 'Insurance'],
+                    datasets: [{
+                        label: 'Average Settlement ($)',
+                        data: [180000, 220000, 195000, 250000, 210000],
+                        backgroundColor: 'rgba(34, 197, 94, 0.7)',
+                        borderColor: 'rgba(34, 197, 94, 1)',
+                        borderWidth: 1
+                    }]
+                },
+                options: {
+                    responsive: true,
+                    plugins: {
+                        legend: {
+                            display: false
+                        }
+                    },
+                    scales: {
+                        y: {
+                            beginAtZero: true,
+                            ticks: {
+                                callback: function(value) {
+                                    return '$' + value.toLocaleString();
+                                }
+                            }
+                        }
+                    }
+                }
+            });
+
+            // Criminal Law Chart
+            const crCtx = document.getElementById('criminalLawChart').getContext('2d');
+            new Chart(crCtx, {
+                type: 'doughnut',
+                data: {
+                    labels: ['Dismissals', 'Reduced Charges', 'Plea Deals', 'Convictions'],
+                    datasets: [{
+                        data: [65, 20, 13, 2],
+                        backgroundColor: [
+                            'rgba(168, 85, 247, 0.7)',
+                            'rgba(192, 132, 252, 0.7)',
+                            'rgba(216, 180, 254, 0.7)',
+                            'rgba(243, 232, 255, 0.7)'
+                        ],
+                        borderColor: [
+                            'rgba(168, 85, 247, 1)',
+                            'rgba(192, 132, 252, 1)',
+                            'rgba(216, 180, 254, 1)',
+                            'rgba(243, 232, 255, 1)'
+                        ],
+                        borderWidth: 1
+                    }]
+                },
+                options: {
+                    responsive: true,
+                    plugins: {
+                        legend: {
+                            position: 'bottom',
+                        }
+                    }
+                }
+            });
+
+            // Landlord Chart
+            const llCtx = document.getElementById('landlordChart').getContext('2d');
+            new Chart(llCtx, {
+                type: 'line',
+                data: {
+                    labels: ['2018', '2019', '2020', '2021', '2022', '2023'],
+                    datasets: [{
+                        label: 'Eviction Success Rate (%)',
+                        data: [92, 94, 95, 96, 97, 98],
+                        fill: false,
+                        backgroundColor: 'rgba(234, 179, 8, 0.7)',
+                        borderColor: 'rgba(234, 179, 8, 1)',
+                        tension: 0.1
+                    }]
+                },
+                options: {
+                    responsive: true,
+                    plugins: {
+                        legend: {
+                            display: false
+                        }
+                    },
+                    scales: {
+                        y: {
+                            beginAtZero: false,
+                            min: 90,
+                            max: 100
+                        }
+                    }
+                }
+            });
+
+            // Case Distribution Chart
+            const cdCtx = document.getElementById('caseDistributionChart').getContext('2d');
+            new Chart(cdCtx, {
+                type: 'pie',
+                data: {
+                    labels: ['Personal Injury', 'Civil Litigation', 'Criminal Defense', 'Landlord/Tenant', 'Corporate Litigation'],
+                    datasets: [{
+                        data: [37, 26, 19, 12, 6],
+                        backgroundColor: [
+                            'rgba(59, 130, 246, 0.7)',
+                            'rgba(34, 197, 94, 0.7)',
+                            'rgba(168, 85, 247, 0.7)',
+                            'rgba(234, 179, 8, 0.7)',
+                            'rgba(239, 68, 68, 0.7)'
+                        ],
+                        borderColor: [
+                            'rgba(59, 130, 246, 1)',
+                            'rgba(34, 197, 94, 1)',
+                            'rgba(168, 85, 247, 1)',
+                            'rgba(234, 179, 8, 1)',
+                            'rgba(239, 68, 68, 1)'
+                        ],
+                        borderWidth: 1
+                    }]
+                },
+                options: {
+                    responsive: true,
+                    plugins: {
+                        legend: {
+                            position: 'right',
+                        }
+                    }
+                }
+            });
+
+            // Yearly Results Chart
+            const yrCtx = document.getElementById('yearlyResultsChart').getContext('2d');
+            new Chart(yrCtx, {
+                type: 'bar',
+                data: {
+                    labels: ['2018', '2019', '2020', '2021', '2022', '2023'],
+                    datasets: [
+                        {
+                            label: 'Cases Handled',
+                            data: [65, 78, 85, 92, 105, 120],
+                            backgroundColor: 'rgba(59, 130, 246, 0.7)',
+                            borderColor: 'rgba(59, 130, 246, 1)',
+                            borderWidth: 1
+                        },
+                        {
+                            label: 'Success Rate (%)',
+                            data: [92, 93, 94, 94, 95, 96],
+                            backgroundColor: 'rgba(34, 197, 94, 0.7)',
+                            borderColor: 'rgba(34, 197, 94, 1)',
+                            borderWidth: 1,
+                            type: 'line',
+                            yAxisID: 'y1'
+                        }
+                    ]
+                },
+                options: {
+                    responsive: true,
+                    scales: {
+                        y: {
+                            beginAtZero: true,
+                            title: {
+                                display: true,
+                                text: 'Number of Cases'
+                            }
+                        },
+                        y1: {
+                            position: 'right',
+                            beginAtZero: false,
+                            min: 90,
+                            max: 100,
+                            title: {
+                                display: true,
+                                text: 'Success Rate (%)'
+                            },
+                            grid: {
+                                drawOnChartArea: false
+                            }
+                        }
+                    }
+                }
+            });
+        }
+
+        // Initialize when DOM is loaded
+        document.addEventListener('DOMContentLoaded', function() {
+            feather.replace();
+            initCharts();
+        });
+    </script>
+</body>
+</html>
